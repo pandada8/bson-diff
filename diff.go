@@ -2,7 +2,6 @@ package bsondiff
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
