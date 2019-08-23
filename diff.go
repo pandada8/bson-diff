@@ -18,7 +18,6 @@ func Diff(a, b interface{}, ignoredField []string) (ret bson.M, err error) {
 		Right:  interfaceToDocument(b),
 	}
 	payload := ctx.Compare()
-	fmt.Println(payload)
 	retDoc, err := payload.MarshalBSON()
 	if err != nil {
 		return
