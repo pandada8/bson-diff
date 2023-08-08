@@ -48,3 +48,9 @@ func Test_CompareValue(t *testing.T) {
 	assert.Equal(t, `{"$unset":{"b":true},"$set":{"a":"c"}}`, docToString(diff), "should be equal")
 	assert.NoError(t, err, "should be no error")
 }
+
+func Test_Nested(t *testing.T) {
+	diff, err := Diff(bson.M{"a": bson.M{"b": "c"}}, bson.M{"a": bson.M{"e": "d"}}, nil)
+	assert.Equal(t, `{"$unset":{"a.b":true},"$set":{"a.e":"d"}}`, docToString(diff), "should be equal")
+	assert.NoError(t, err, "should be no error")
+}

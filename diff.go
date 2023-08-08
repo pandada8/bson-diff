@@ -122,7 +122,7 @@ func (c *CompareContext) Compare() (ret bsonx.Doc) {
 			// is both document ?
 			if valueLeft.Type == valueRight.Type && bsontype.EmbeddedDocument == valueRight.Type {
 				// push to stack, compare internal values
-				c.Stack = append(c.Stack, NewCompareStackFrame(append(c.CurrentFrame.Prefix), valueLeft.Document(), valueRight.Document()))
+				c.Stack = append(c.Stack, NewCompareStackFrame(append(c.CurrentFrame.Prefix, key), valueLeft.Document(), valueRight.Document()))
 				continue
 			}
 			// is both array ?
